@@ -126,15 +126,18 @@ int main() {
         if( cmds.back()->get_command() == "#" ){//|| cmds.back()->get_command() == "&&" || cmds.back()->get_command() == "" ||){
             cmds.pop_back();
         }
+        if( cmds.front()->get_command() == "exit")
+            exit(0);
         //if there are multiple commands. i.e. there are connectors
         if( cmds.size() > 1 ){
             vector<Component*> temp;
             Connector* tempConnector = NULL;
-
+    
             for( int i = cmds.size() - 1; i >= 0; --i ){
+                cmds.at(i)->print();                                    ///addeed this 
                 if( cmds.at(i)->get_command() == "exit")
                     exit(0);
-                if( cmds.at(i)->isConnector() ){
+                if( !cmds.at(i)->isCommand() ){
                     tempConnector = static_cast<Connector*>(cmds.at(i));
                 }
                 else{//not connector
@@ -155,7 +158,9 @@ int main() {
         /////////////////////////////////////////////////////////////////////////////////////
         //                      EXECUTE COMMAND
         //wether there is only one command or a tree the tree will be the last element
-        cmds.back()->run();
+        Component* finalRun = cmds.back();
+        if( !cmds.empty() )
+            finalRun->run();
     }
     return 0;
 }

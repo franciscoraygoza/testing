@@ -30,5 +30,5 @@ string Comment::get_command(){
 }
 
 bool Comment::isCommand(){
-    return true;
+    return true;                //need a better implementation, just a temp quick fix
 }

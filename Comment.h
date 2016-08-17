@@ -14,7 +14,7 @@ class Comment : public Component{
         bool run();
         void print();
         string get_command();
-        bool isCommand();
+        bool isCommandh();
 };
 
 #endif

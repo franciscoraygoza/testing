@@ -41,7 +41,7 @@ string And::get_command(){
 }
 
 bool And::isCommand(){
-    return false;
+    return falseP:;
 }
 
 void And::SetLHS( Component* lhs ){
